@@ -3,14 +3,24 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
+# df = pd.read_csv('medical_examination.csv')
+# print(df.head)
+# print(df.shape)
+
+# bmi = df['weight'] / ((df['height'] / 100) ** 2)
+# print(bmi)
+# df['overweight'] = (bmi > 25)
+
 # Import data
-df = None
+df = pd.read_csv('medical_examination.csv')
 
 # Add 'overweight' column
-df['overweight'] = None
+bmi = df['weight'] / ((df['height'] / 100) ** 2)
+df['overweight'] = (bmi > 25)
 
 # Normalize data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
-
+df['gluc'] = df['gluc'] != 1
+df['cholesterol'] = df['cholesterol'] != 1
 
 # Draw Categorical Plot
 def draw_cat_plot():
